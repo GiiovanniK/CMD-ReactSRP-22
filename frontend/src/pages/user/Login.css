@@ -1,0 +1,80 @@
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.makeAccount {
+  justify-content: end;
+}
+
+.makeAccount p {
+  font-weight: bold;
+}
+
+.makeAccount a {
+  font-weight: normal;
+  color: #fd3d81;
+  text-decoration: none;
+}
+
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.logo img {
+  width: 30%;
+}
+
+.formHeader {
+    margin-bottom: 1em;
+}
+
+form input {
+  background-color: #d9d9d9 !important;
+  color: #000000 !important;
+  margin-top: 0.5em;
+}
+
+.login {
+  margin: 0 2em 0 2em;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.login-form {
+  margin-bottom: 1em;
+}
+
+input::placeholder {
+  color: #000000 !important;
+  font-weight: bold !important;
+  text-align: left;
+}
+
+.login-form-submit {
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #37f2a9;
+  border-radius: 15px;
+  font-size: 14px;
+  margin-top: 1em;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+::-webkit-datetime-edit {
+  text-indent: 7px;
+}
+
+::-webkit-calendar-picker-indicator {
+  padding-right: 1em;
+}
