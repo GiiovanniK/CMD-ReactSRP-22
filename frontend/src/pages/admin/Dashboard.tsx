@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { IonContent, IonHeader, IonPage, IonIcon, IonButton, IonToolbar, IonButtons } from "@ionic/react";
-import { personCircleOutline } from "ionicons/icons";
-import "./Home.css";
-import MainTabs from "../../components/MainTabs";
-import Greeting from "../../components/Greeting";
+import { IonContent, IonHeader, IonPage, IonButton, IonToolbar } from "@ionic/react";
+import "./Dashboard.css";
 
 import UserService from "../../services/UserService";
 import { UsersResponse } from "../user/Types";
+import Greeting from "../../components/Greeting";
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   const [content, setContent] = useState([]);
 
   useEffect(() => {
     UserService.getUser()
       .then((response) => {
-        setContent(response.data.documents)
+        setContent(response.data.documents);
       })
       .catch((error) => {
         console.log(error.toJSON());
@@ -28,16 +26,6 @@ const Home: React.FC = () => {
           <div className="logo">
             <img src="assets/images/logo.png" alt="De Gasjes logo" />
           </div>
-          <IonButtons slot="start">
-            <IonButton>
-              <IonIcon/>
-            </IonButton>
-          </IonButtons>
-          <IonButtons slot="end">
-            <IonButton href="/profile">
-              <IonIcon icon={personCircleOutline} />
-            </IonButton>
-          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" color="degasjes-white">
@@ -47,10 +35,14 @@ const Home: React.FC = () => {
             <p key={entry._id}>{entry.firstName}</p>
           ))}
         </div>
+        <div className="center">
+          <IonButton className="ion-margin-top buttonText" color="degasjes-main" href="/list">
+            Gebruikers
+          </IonButton>
+        </div>
       </IonContent>
-      <MainTabs />
     </IonPage>
   );
 };
 
-export default Home;
+export default Dashboard;

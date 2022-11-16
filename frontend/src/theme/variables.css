@@ -38,6 +38,15 @@ http://ionicframework.com/docs/theming/ */
   src: url('../../public/assets/fonts/DM_Sans/DMSans-Italic.ttf');
 }
 
+* {
+  font-family: "DM Sans";
+}
+
+h1 {
+  font-family: "DM Serif Display";
+  font-size: 40px;
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -313,7 +322,7 @@ http://ionicframework.com/docs/theming/ */
   }
 }
 
-/* VRcafe */
+/* degasjes */
 .ion-color-degasjes-main {
   --ion-color-base: var(--ion-color-degasjes-main);
   --ion-color-base-rgb: var(--ion-color-degasjes-main-rgb);

@@ -1,94 +1,42 @@
-import { IonContent, IonHeader, IonPage, IonButtons, IonButton, IonToolbar, IonIcon, IonAvatar, IonImg } from "@ionic/react";
-import { personCircleOutline, qrCodeOutline, peopleCircle, basket, pencilOutline, arrowForwardOutline } from "ionicons/icons";
+import { IonContent, IonHeader, IonPage, IonToolbar, IonAvatar, IonImg } from "@ionic/react";
 import "./Profile.css";
 import MainTabs from "../../components/MainTabs";
+import { useEffect, useState } from "react";
+import UserService from "../../services/UserService";
+import { UsersResponse } from "../user/Types";
 
 const Profile: React.FC = () => {
+  const [content, setContent] = useState([]);
+  
+  useEffect(() => {
+    UserService.getUser()
+      .then((response) => {
+        setContent(response.data.documents)
+      })
+      .catch((error) => {
+        console.log(error.toJSON());
+      });
+  }, []);
+  
   return (
     <IonPage>
-      <IonHeader class="ion-no-border">
-        <IonToolbar color="vrcafe-main">
+      <IonHeader>
+        <IonToolbar color="degasjes-main">
           <div className="logo">
-            <img src="assets/images/logo.png" alt="VRcafe logo" />
+            <img src="assets/images/logo.png" alt="De Gasjes logo" />
           </div>
-          <IonButtons slot="start">
-            <IonButton href="/profile">
-              <IonIcon icon={personCircleOutline} />
-            </IonButton>
-          </IonButtons>
-          <IonButtons slot="end">
-            <IonButton id="open-modal" expand="block">
-              <IonIcon icon={qrCodeOutline} />
-            </IonButton>
-          </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen color="degasjes-white">
         <div className="center ion-margin-top">
           <IonAvatar class="modalImage">
             <IonImg src="https://i.pravatar.cc/1000" />
           </IonAvatar>
         </div>
-        <div className="center lineHeight ion-margin-top">
-          <p className="bold">Voornaam Achternaam</p>
-          <p>dd/mm/jj</p>
-          <div className="xpProgress">
-            <p>Level XP - Rank </p>
-          </div>
-        </div>
-        <div className="modalButtons ion-margin-top lineHeight">
-          <div>
-            <a href="/edit">
-              <IonIcon icon={pencilOutline} />
-              <p>Gegevens</p>
-            </a>
-          </div>
-          <div>
-            <a href="/orders">
-              <IonIcon icon={basket} />
-              <p>Bestellingen</p>
-            </a>
-          </div>
-          <div>
-            <a href="/friends">
-              <IonIcon icon={peopleCircle} />
-              <p>Vrienden</p>
-            </a>
-          </div>
-        </div>
-        <div className="ion-margin">
-          <div className="flex openMore">
-            <h2>Badges</h2>
-            <IonIcon icon={arrowForwardOutline} />
-          </div>
-          <div className="badges">
-            <div>
-              <img src="./assets/images/logo.png" alt="" />
-            </div>
-            <div>
-              <img src="./assets/images/logo.png" alt="" />
-            </div>
-            <div>
-              <img src="./assets/images/logo.png  " alt="" />
-            </div>
-          </div>
-        </div>
-        <div className="ion-margin">
-          <div className="flex openMore">
-            <h2>Achievements</h2>
-            <IonIcon icon={arrowForwardOutline} />
-          </div>
-          <div className="achievements">
-            <div>
-              <img src="./assets/images/logo.png" alt="" />
-            </div>
-            <div>
-              <img src="./assets/images/logo.png" alt="" />
-            </div>
-            <div>
-              <img src="./assets/images/logo.png  " alt="" />
-            </div>
-          </div>
+        <div className="center">
+          {content.map((entry: UsersResponse) => (
+            <h2 key={entry._id}>{entry.firstName}</h2>
+          ))}
         </div>
       </IonContent>
       <MainTabs />

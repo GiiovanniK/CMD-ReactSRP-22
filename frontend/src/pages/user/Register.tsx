@@ -6,34 +6,29 @@ const Register: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="vrcafe-main">
+        <IonToolbar color="degasjes-main">
           <div className="logo">
-            <img src="assets/images/logo.png" alt="VRcafe logo" />
+            <img src="assets/images/logo.png" alt="De Gasjes logo" />
           </div>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen color="vrcafe-white">
+      <IonContent fullscreen color="degasjes-white">
         <form className="register">
           <h1 className="formHeader">Registreren</h1>
           <div className="register-form">
-            <IonLabel>Emailadres</IonLabel>
             <IonInput placeholder="Emailadres" type="email" name="emailadress" required></IonInput>
           </div>
           <div className="register-form">
-            <IonLabel>Wachtwoord</IonLabel>
             <IonInput placeholder="Wachtwoord" type="password" name="pass" required></IonInput>
           </div>
           <div className="register-form">
-            <IonLabel>Herhaal wachtwoord</IonLabel>
             <IonInput placeholder="Herhaal wachtwoord" type="password" name="passRepeat" required></IonInput>
           </div>
           <div className="firstNameLast">
             <div className="register-form">
-              <IonLabel>Voornaam</IonLabel>
               <IonInput placeholder="Voornaam" type="text" name="firstName" autocapitalize="on" required></IonInput>
             </div>
             <div className="register-form">
-              <IonLabel>Achternaam</IonLabel>
               <IonInput placeholder="Achternaam" type="text" name="lastName" autocapitalize="on" required></IonInput>
             </div>
           </div>
@@ -43,13 +38,11 @@ const Register: React.FC = () => {
           </div>
           <div className="ion-margin-top">
             <div>
-              <IonItem color="vrcafe-white" lines="none">
+              <IonItem color="degasjes-white" lines="none">
                 <IonCheckbox slot="start"></IonCheckbox>
                 <IonLabel>Algemene voorwaarden</IonLabel>
               </IonItem>
-            </div>
-            <div>
-              <IonItem color="vrcafe-white" lines="none">
+              <IonItem color="degasjes-white" lines="none">
                 <IonCheckbox slot="start"></IonCheckbox>
                 <IonLabel>Privacy voorwaarden</IonLabel>
               </IonItem>

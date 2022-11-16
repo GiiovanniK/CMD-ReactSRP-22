@@ -4,7 +4,7 @@ import { arrowBackOutline, cameraOutline } from "ionicons/icons";
 import "./List.css";
 
 import UserService from "../../services/UserService";
-import { Account } from "../user/Types";
+import { UsersResponse } from "../user/Types";
 
 const List: React.FC = () => {
   const [content, setContent] = useState([]);
@@ -12,8 +12,7 @@ const List: React.FC = () => {
   useEffect(() => {
     UserService.getUser()
       .then((response) => {
-        // axios creates a data object on its own. back-end also contains a data object so it becomes data.data
-        setContent(response.data.data);
+        setContent(response.data.documents)
       })
       .catch((error) => {
         console.log(error.toJSON());
@@ -23,26 +22,30 @@ const List: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="vrcafe-main">
+        <IonToolbar color="degasjes-main">
           <div className="logo">
-            <img src="assets/images/logo.png" alt="VRcafe logo" />
+            <img src="assets/images/logo.png" alt="De Gasjes logo" />
           </div>
           <IonButtons slot="start">
-            <IonButton href="/admin">
+            <IonButton href="/dashboard">
               <IonIcon icon={arrowBackOutline} />
             </IonButton>
           </IonButtons>
           <IonButtons slot="end">
             <IonButton>
-              <IonIcon icon={cameraOutline} />
+              <IonIcon/>
             </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding" color="vrcafe-white">
+      <IonContent className="ion-padding" color="degasjes-white">
+      <h1>Gebruikers</h1>
         <div>
-          {content.map((entry: Account) => (
-            <p>{entry.email}</p>
+          {content.map((entry: UsersResponse) => (
+            <div key={entry._id}>
+              <p>{entry.firstName} {entry.lastName}</p>
+              <p>{entry.role}</p>
+            </div>
           ))}
         </div>
       </IonContent>

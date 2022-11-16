@@ -1,11 +1,35 @@
+ion-checkbox {
+  --size: 32px;
+  --checkmark-color: #ffffff;
+  --background-checked: #927070;
+  --border-color: #ffffff;
+  --border-color-checked: #ffffff;
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+}
+
+ion-item {
+  --padding-start: 0px;
+}
+
 .logo {
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 1.25em 0 1.25em 0;
 }
 
 .logo img {
   width: 30%;
+}
+
+ion-input {
+  --padding-top: 20px !important;
+  --padding-end: 20px !important;
+  --padding-bottom: 20px !important;
+  font-family: "DM Sans" !important;
 }
 
 form input {
@@ -33,10 +57,10 @@ input::placeholder {
 }
 
 .register-form-submit {
-  color: #000000;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: bold;
-  background-color: #37f2a9;
+  background-color: #1f1919;
   border-radius: 15px;
   font-size: 14px;
   margin-top: 1em;

@@ -3,3 +3,8 @@
     text-transform: uppercase;
     font-size: 14px;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+}

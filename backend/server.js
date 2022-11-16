@@ -22,22 +22,26 @@ const config = {
   },
 };
 
-const payload = {
+app.get("/", (_, res) => {
+  res.send("Hello World!");
+});
+
+// Users
+const userPayload = {
   collection: "users",
   database: DATABASE,
   dataSource: DATASOURCE,
   projection: {
     _id: 1,
+    firstName: 1,
+    lastName: 1,
+    role: 1,
   },
 };
 
-app.get("/", (_, res) => {
-  res.send("Hello World!");
-});
-
 app.get("/users", (_, res) => {
   axios
-    .post(API_URL + "/action/findOne", payload, config)
+    .post(API_URL + "/action/find", userPayload, config)
     .then((response) => res.send(response.data))
     .catch((error) => {
       console.log(error);

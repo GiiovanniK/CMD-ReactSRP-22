@@ -29,21 +29,19 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar color="vrcafe-main">
+        <IonToolbar color="degasjes-main">
           <div className="logo">
-            <img src="assets/images/logo.png" alt="VRcafe logo" />
+            <img src="assets/images/logo.png" alt="degasjes logo" />
           </div>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen color="vrcafe-white">
+      <IonContent fullscreen color="degasjes-white">
         <form className="login">
           <h1 className="formHeader">Inloggen</h1>
           <div className="login-form">
-            <IonLabel>Emailadres</IonLabel>
             <IonInput placeholder="Emailadres" type="email" name="email" onChange={(event) => handleEmailChange(event)} required></IonInput>
           </div>
           <div className="login-form">
-            <IonLabel>Wachtwoord</IonLabel>
             <IonInput placeholder="Wachtwoord" type="password" name="password" onChange={(event) => handlePswdChange(event)} required></IonInput>
           </div>
           <IonButton type="submit" fill="clear" className="login-form-submit" onClick={handleSubmit}>

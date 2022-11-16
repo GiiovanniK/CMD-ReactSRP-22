@@ -1,7 +1,7 @@
 import { Redirect, Route } from "react-router-dom";
 import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, IonToolbar, IonFooter } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { home, gift } from "ionicons/icons";
+import { home, copyOutline } from "ionicons/icons";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -36,7 +36,7 @@ const MainTabs: React.FC = () => (
             <IonLabel>home</IonLabel>
           </IonTabButton>
           <IonTabButton tab="projects" href="/projects">
-            <IonIcon icon={gift} />
+            <IonIcon icon={copyOutline} />
             <IonLabel>projects</IonLabel>
           </IonTabButton>
         </IonTabBar>

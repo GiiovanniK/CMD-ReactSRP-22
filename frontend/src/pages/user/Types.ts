@@ -1,9 +1,16 @@
-export interface Account {
-    id: number;
-    qrCode: string;
+export interface UsersRequest {
+    _id: number;
     email: string;
-    xp: number;
-    level: number;
-    rankName: string;
-    missedCheckouts: number;
-}  
+    password: string;
+    repeatPassword: string;
+    firstName: string;
+    lastName: string;
+}
+
+export interface UsersResponse {
+    _id: number;
+    email: string;
+    firstName: string;
+    lastName: string;
+    role: string;
+}

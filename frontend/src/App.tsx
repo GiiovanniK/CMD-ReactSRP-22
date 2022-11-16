@@ -27,8 +27,8 @@ import Home from './pages/home/Home';
 import Register from './pages/user/Register';
 import Login from './pages/user/Login';
 import Profile from './pages/profile/Profile';
-import Admin from './pages/dashboard/Admin';
-import List from './pages/dashboard/List';
+import Dashboard from './pages/admin/Dashboard';
+import List from './pages/admin/List';
 
 setupIonicReact();
 
@@ -39,7 +39,7 @@ const App: React.FC = () => (
         <Route path="/register" component={Register} exact={true} />
         <Route path="/login" component={Login} exact={true} />
         <Route path="/profile" component={Profile} exact={true} />
-        <Route path="/admin" component={Admin} exact={true} />
+        <Route path="/dashboard" component={Dashboard} exact={true} />
         <Route path="/list" component={List} exact={true} />
       </IonReactRouter>
     </IonApp>

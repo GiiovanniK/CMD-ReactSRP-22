@@ -11,11 +11,12 @@
 
 .makeAccount p {
   font-weight: bold;
+  margin: 1em 0 0 0;
 }
 
 .makeAccount a {
   font-weight: normal;
-  color: #fd3d81;
+  color: #927070;
   text-decoration: none;
 }
 
@@ -29,12 +30,8 @@
   width: 30%;
 }
 
-.formHeader {
-    margin-bottom: 1em;
-}
-
 form input {
-  background-color: #d9d9d9 !important;
+  background-color: #D9D9d9 !important;
   color: #000000 !important;
   margin-top: 0.5em;
 }
@@ -58,10 +55,10 @@ input::placeholder {
 }
 
 .login-form-submit {
-  color: #000000;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: bold;
-  background-color: #37f2a9;
+  background-color: #1f1919;
   border-radius: 15px;
   font-size: 14px;
   margin-top: 1em;
