@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IonContent, IonHeader, IonPage, IonIcon, IonButton, IonToolbar, IonButtons} from "@ionic/react";
-import { arrowBackOutline, cameraOutline } from "ionicons/icons";
+import { arrowBackOutline } from "ionicons/icons";
 import "./List.css";
 
 import UserService from "../../services/UserService";

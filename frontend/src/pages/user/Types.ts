@@ -1,8 +1,6 @@
 export interface UsersRequest {
-    _id: number;
     email: string;
     password: string;
-    repeatPassword: string;
     firstName: string;
     lastName: string;
 }

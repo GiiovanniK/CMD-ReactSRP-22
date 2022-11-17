@@ -1,16 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
+import { UsersRequest } from "../pages/user/Types";
 
 const BASE_URL = process.env.REACT_APP_API;
 
-const register = (email: string, password: string) => {
-    return axios.post(BASE_URL + "register", {
-        email,
-        password,
-    });
+const register = (payload: UsersRequest) => {
+  return axios.post(BASE_URL + "/register", {
+    data: payload,
+  });
 };
 
 const login = (email: string, password: string) => {
-  return axios.post(BASE_URL + "login", {
+  return axios
+    .post("/login", {
       email,
       password,
     })
@@ -23,21 +24,21 @@ const login = (email: string, password: string) => {
 };
 
 const logout = () => {
-    localStorage.removeItem("user");
-    return axios.post(BASE_URL + "logout").then((response) => {
-        return response.data;
-    });
+  localStorage.removeItem("user");
+  return axios.post("/logout").then((response) => {
+    return response.data;
+  });
 };
 
 const getCurrentUser = () => {
-    return JSON.parse(localStorage.getItem("user")!);
+  return JSON.parse(localStorage.getItem("user")!);
 };
 
 const AuthService = {
-    register,
-    login,
-    logout,
-    getCurrentUser,
-}
+  register,
+  login,
+  logout,
+  getCurrentUser,
+};
 
 export default AuthService;
