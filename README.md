@@ -35,9 +35,13 @@ Create a .env file in the root of the frontend folder, define the following vari
 Also create a .env file in the root of the backend folder, define the following variables inside of the file.
 
 > `API_URL=` "https://data.mongodb-api.com/app/data-jiorh/endpoint/data/v1"
+
 > `API_KEY=` "fHcHHxPGty42GPuWtRH4Zn937FcwL0M4wMQfy1Mh6u0Dm1ZW2Pl9Nk75JkFBZRtk"
+
 > `PORT=` "3001"
+
 > `DATABASE=` "CMDSRP"
+
 > `DATASOURCE=` "Cluster0"
 
 Open a terminal in the backend folder. Start the server by typing the following command in the terminal
