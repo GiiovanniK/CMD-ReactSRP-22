@@ -2,7 +2,7 @@
 - [Table of Contents](#table-of-contents)
 - [Prerequisites required for the app installation through terminal](#prerequisites-required-for-the-app-installation-through-terminal)
 - [App installation](#app-installation)
-- [Framworks used](#framworks-used)
+- [Frameworks used](#frameworks-used)
 - [Dependencies: packages used](#dependencies-packages-used)
 - [Contributors](#contributors)
 
@@ -66,7 +66,7 @@ Test admin login credentials:
 
 >Password: `admin`
 
-# Framworks used
+# Frameworks used
 * [react](https://reactjs.org/)
 * [ionic](https://ionicframework.com/)
 * [capacitor](https://capacitorjs.com/)
