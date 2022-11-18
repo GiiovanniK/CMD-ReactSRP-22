@@ -1,14 +1,10 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
-- [What is this app?](#what-is-this-app)
 - [Prerequisites required for the app installation through terminal](#prerequisites-required-for-the-app-installation-through-terminal)
 - [App installation](#app-installation)
 - [Framworks used](#framworks-used)
 - [Dependencies: packages used](#dependencies-packages-used)
 - [Contributors](#contributors)
-
-# What is this app?
-Collabr is a matching application for musicians and artists so they're able to find other producers/vocalists/pianists/gitarists and connect! Collaborate on songs and other projects such as starting a band. 
 
 # Prerequisites required for the app installation through terminal
 Download [NodeJS](https://nodejs.org/en/download/)
