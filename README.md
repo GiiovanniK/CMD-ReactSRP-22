@@ -52,22 +52,15 @@ Open a terminal in the frontend folder. Run the application by typing the follow
 
 >`ionic serve`
 
-```sh
-git clone https://github.com/GiiovanniK/CMD-ReactSRP-22.git
-npm install
-npm install
-ionic serve
-```
+![Bash - App installation](https://github.com/GiiovanniK/CMD-ReactSRP-22/blob/163898abc453e70a6f31651df60702158d6b2de0/carbon.png)
 
-![Bash - App installation](https://github.com/GiiovanniK/project-tech/blob/main/docs/bash-installation.png?raw=true)
-
-User test login credentials:
+Test user login credentials:
 
 >Username: `user@user.nl`
 
 >Password: `user`
 
-Admin test login credentials:
+Test admin login credentials:
 
 >Username: `admin@admin.nl`
 
