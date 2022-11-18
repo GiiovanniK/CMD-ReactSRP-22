@@ -28,7 +28,7 @@ app.get("/", (_, res) => {
   res.send("Hello World!");
 });
 
-// Users post
+// users post
 const registerPayload = {
   collection: "users",
   database: DATABASE,
@@ -57,7 +57,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// Users
+// users get
 const userPayload = {
   collection: "users",
   database: DATABASE,
