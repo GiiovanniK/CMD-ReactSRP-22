@@ -3,6 +3,7 @@ import axios from "axios";
 import cors from "cors";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -57,7 +58,74 @@ app.post("/register", async (req, res) => {
   }
 });
 
+<<<<<<< Updated upstream
 // users get
+=======
+// Login
+const loginPayload = {
+  collection: "users",
+  database: DATABASE,
+  dataSource: DATASOURCE,
+  projection: {
+    email: 1,
+    password: 1,
+  },
+};
+
+app.post("/login", async (req, res) => {
+  const User = {
+    email: req.body.data.email,
+    password: req.body.data.password,
+  };
+
+  axios.post(API_URL + "/action/findOne", loginPayload, config).then(async (response) => {
+    const match = await bcrypt.compare(User.password, response.data.document.password);
+    if (match) {
+      let jwtSecretKey = process.env.JWT_SECRET_KEY;
+      let data = {
+        time: Date(),
+        userId: 12,
+      };
+      const token = jwt.sign(data, jwtSecretKey);
+      res.send(token);
+      console.log(token);
+    } else {
+      res.status(404).send({ message: "Dit wachtwoord bestaat niet" });
+    }
+  });
+  if (!User.email === res.email) {
+    return res.json({ error: "User not found!" });
+  }
+});
+
+app.get("/validateToken", (req, res) => {
+  let tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
+  let jwtSecretKey = process.env.JWT_SECRET_KEY;
+
+  try {
+      const token = req.header(tokenHeaderKey);
+
+      const verified = jwt.verify(token, jwtSecretKey);
+      if(verified){
+          return res.send("Successfully Verified");
+      }else{
+          // Access Denied
+          return res.status(401).send(error);
+      }
+  } catch (error) {
+      // Access Denied
+      return res.status(401).send(error);
+  }
+});
+
+app.get("/logout", (req, res) => {
+  req.logOut();
+  // req.flash('succes_msg', 'You are logged out');
+  res.redirect("login");
+});
+
+// Users
+>>>>>>> Stashed changes
 const userPayload = {
   collection: "users",
   database: DATABASE,

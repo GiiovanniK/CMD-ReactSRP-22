@@ -6,6 +6,11 @@ export interface UsersRequest {
     lastName: string;
 }
 
+export interface UserLogin {
+    email: string;
+    password: string;
+}
+
 export interface UsersResponse {
     _id: number;
     email: string;

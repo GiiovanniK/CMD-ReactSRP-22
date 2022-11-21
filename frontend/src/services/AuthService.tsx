@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UsersRequest } from "../pages/user/Types";
+import { UserLogin, UsersRequest } from "../pages/user/Types";
 
 const BASE_URL = process.env.REACT_APP_API;
 
@@ -9,18 +9,10 @@ const register = (payload: UsersRequest) => {
   });
 };
 
-const login = (email: string, password: string) => {
-  return axios
-    .post("/login", {
-      email,
-      password,
-    })
-    .then((response) => {
-      if (response.data.email) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-      return response.data;
-    });
+const login = (payload: UserLogin) => {
+  return axios.post(BASE_URL + "/login", {
+    data: payload,
+  });
 };
 
 const logout = () => {

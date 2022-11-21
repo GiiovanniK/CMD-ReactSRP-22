@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { IonContent, IonHeader, IonPage, IonButton, IonToolbar, IonInput } from "@ionic/react";
-import {} from "ionicons/icons";
 import "./Login.css";
 import AuthService from "../../services/AuthService";
 
@@ -20,12 +19,12 @@ const Login: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    AuthService.login(email, password)
-      .then((response) => {
-        console.log(response);
+    AuthService.login({ email, password })
+      .then((res) => {
+        console.log(res);
       })
-      .catch((error) => {
-        console.log(error.toJSON());
+      .catch((err) => {
+        console.log(err.toJSON());
       });
   };
 
@@ -39,15 +38,15 @@ const Login: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen color="degasjes-white">
-        <form className="login">
+        <form className="login" onSubmit={handleSubmit}>
           <h1 className="formHeader">Inloggen</h1>
           <div className="login-form">
-            <IonInput placeholder="Emailadres" type="email" name="email" onChange={(e) => handleEmailChange(e)} required></IonInput>
+            <IonInput placeholder="Emailadres" type="email" name="email" value={email} onIonChange={(e) => handleEmailChange(e)} required></IonInput>
           </div>
           <div className="login-form">
-            <IonInput placeholder="Wachtwoord" type="password" name="password" onChange={(e) => handlePswdChange(e)} required></IonInput>
+            <IonInput placeholder="Wachtwoord" type="password" name="password" value={password} onIonChange={(e) => handlePswdChange(e)} required></IonInput>
           </div>
-          <IonButton type="submit" fill="clear" className="login-form-submit" onClick={handleSubmit}>
+          <IonButton fill="clear" className="login-form-submit" onClick={handleSubmit}>
             Login
           </IonButton>
           <div className="center makeAccount">
