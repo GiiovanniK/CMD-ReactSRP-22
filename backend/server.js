@@ -58,9 +58,6 @@ app.post("/register", async (req, res) => {
   }
 });
 
-<<<<<<< Updated upstream
-// users get
-=======
 // Login
 const loginPayload = {
   collection: "users",
@@ -125,7 +122,6 @@ app.get("/logout", (req, res) => {
 });
 
 // Users
->>>>>>> Stashed changes
 const userPayload = {
   collection: "users",
   database: DATABASE,
