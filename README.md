@@ -70,7 +70,7 @@ Test admin login credentials:
 
 >Password: `admin`
 
-!!RUN IN MOBILE VIEW WITH DEVTOOLS!!
+**RUN ON MOBILE VIEW WITH DEVTOOLS**
 
 # Frameworks used
 * [react](https://reactjs.org/)
