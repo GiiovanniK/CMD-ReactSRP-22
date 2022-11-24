@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import jwtAuth from "./middleware/jwtAuth.js";
+import roleAuth from "./middleware/roleAuth.js";
 
 dotenv.config();
 
@@ -79,7 +79,7 @@ app.post("/login", async (req, res) => {
     const emailMatch = User.email === response.data.document.email;
     const passwordMatch = await bcrypt.compare(User.password, response.data.document.password);
     if (emailMatch && passwordMatch) {
-      const accessToken = jwt.sign({ email: req.body.data.email }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
+      const accessToken = jwt.sign({ email: response.data.document.email, role: response.data.document.role }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
       res.json({ accessToken });
     } else {
       console.log("Email of wachtwoord is onjuist");
@@ -104,7 +104,7 @@ const userPayload = {
   },
 };
 
-app.get("/users", jwtAuth, (_, res) => {
+app.get("/users", roleAuth, (_, res) => {
   axios
     .post(API_URL + "/action/find", userPayload, config)
     .then((response) => res.send(response.data))

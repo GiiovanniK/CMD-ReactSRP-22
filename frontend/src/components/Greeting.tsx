@@ -7,7 +7,7 @@ const Greeting = () => {
   else if (hours >= 12 && hours <= 17) greet = "Goedemiddag";
   else if (hours >= 17 && hours <= 24) greet = "Goedenavond";
 
-  return <h1>{greet},</h1>;
+  return <h1>{greet}</h1>;
 };
 
 export default Greeting;

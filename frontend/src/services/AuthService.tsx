@@ -1,4 +1,3 @@
-import { useIonRouter } from "@ionic/react";
 import axios from "axios";
 import { UserLogin, UsersRequest } from "../pages/user/Types";
 

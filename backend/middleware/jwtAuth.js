@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const jwtAuth = async (req, res, next) => {
-  const token = req.header("x-auth-token");
+  const token = (req.header("x-auth-token"));
   console.log(token)
   if (!token) {
     res.status(401).json("token not found");

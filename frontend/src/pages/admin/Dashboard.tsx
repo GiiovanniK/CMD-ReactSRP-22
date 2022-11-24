@@ -32,13 +32,8 @@ const Dashboard: React.FC = () => {
         <div>
           <Greeting />
           {content.map((entry: UsersResponse) => (
-            <p key={entry._id}>{entry.firstName}</p>
+            <p key={entry._id}>First name: {entry.firstName} Last name: {entry.lastName} Role: {entry.role}</p>
           ))}
-        </div>
-        <div className="center">
-          <IonButton className="ion-margin-top buttonText" color="degasjes-main" href="/list">
-            Gebruikers
-          </IonButton>
         </div>
       </IonContent>
     </IonPage>
