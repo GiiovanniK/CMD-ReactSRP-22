@@ -3,8 +3,15 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_API;
 
 const getUser = () => {
+  const config = {
+    headers: {
+      "content-type": "application/json",
+      "x-auth-token": localStorage.getItem("user"),
+    },
+  }
   return axios.get(
     BASE_URL + "/users",
+    config,
   );
 };
 

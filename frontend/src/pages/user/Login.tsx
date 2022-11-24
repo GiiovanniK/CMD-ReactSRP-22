@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { IonContent, IonHeader, IonPage, IonButton, IonToolbar, IonInput } from "@ionic/react";
+import { IonContent, IonHeader, IonPage, IonButton, IonToolbar, IonInput, useIonRouter } from "@ionic/react";
 import "./Login.css";
 import AuthService from "../../services/AuthService";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const router = useIonRouter();
 
   const handleEmailChange = (e: any) => {
     if (!e.target.value) {
@@ -22,6 +24,7 @@ const Login: React.FC = () => {
     AuthService.login({ email, password })
       .then((res) => {
         console.log(res);
+        router.push('/');
       })
       .catch((err) => {
         console.log(err.toJSON());

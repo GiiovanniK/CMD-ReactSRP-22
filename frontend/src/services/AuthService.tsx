@@ -10,9 +10,18 @@ const register = (payload: UsersRequest) => {
 };
 
 const login = (payload: UserLogin) => {
-  return axios.post(BASE_URL + "/login", {
-    data: payload,
-  });
+  return axios
+    .post(BASE_URL + "/login", {
+      data: payload,
+    })
+    .then((response) => {
+      if (response.data.accessToken) {
+        localStorage.setItem("user", response.data.accessToken);
+        console.log(localStorage)
+      } else {
+        console.log("no response");
+      }
+    });
 };
 
 const logout = () => {
@@ -22,15 +31,10 @@ const logout = () => {
   });
 };
 
-const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user")!);
-};
-
 const AuthService = {
   register,
   login,
   logout,
-  getCurrentUser,
 };
 
 export default AuthService;

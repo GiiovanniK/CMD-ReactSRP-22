@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import jwtAuth from "./middleware/jwtAuth.js";
 
 dotenv.config();
 
@@ -26,7 +27,7 @@ const config = {
 };
 
 app.get("/", (_, res) => {
-  res.send("Hello World!");
+  res.send("Server is running!");
 });
 
 // users post
@@ -59,14 +60,10 @@ app.post("/register", async (req, res) => {
 });
 
 // Login
-const loginPayload = {
+let loginPayload = {
   collection: "users",
   database: DATABASE,
   dataSource: DATASOURCE,
-  projection: {
-    email: 1,
-    password: 1,
-  },
 };
 
 app.post("/login", async (req, res) => {
@@ -74,20 +71,19 @@ app.post("/login", async (req, res) => {
     email: req.body.data.email,
     password: req.body.data.password,
   };
-
+  if (!User.email || !User.password) {
+    return res.status(400).json("Ongeldige invoer");
+  }
+  loginPayload = { ...loginPayload, filter: { email: User.email } };
   axios.post(API_URL + "/action/findOne", loginPayload, config).then(async (response) => {
-    const match = await bcrypt.compare(User.password, response.data.document.password);
-    if (match) {
-      let jwtSecretKey = process.env.JWT_SECRET_KEY;
-      let data = {
-        time: Date(),
-        userId: 12,
-      };
-      const token = jwt.sign(data, jwtSecretKey);
-      res.send(token);
-      console.log(token);
+    const emailMatch = User.email === response.data.document.email;
+    const passwordMatch = await bcrypt.compare(User.password, response.data.document.password);
+    if (emailMatch && passwordMatch) {
+      const accessToken = jwt.sign({ email: req.body.data.email }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
+      res.json({ accessToken });
     } else {
-      res.status(404).send({ message: "Dit wachtwoord bestaat niet" });
+      console.log("Email of wachtwoord is onjuist");
+      res.status(400).json({ message: "Email of wachtwoord is onjuist" });
     }
   });
   if (!User.email === res.email) {
@@ -95,30 +91,9 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/validateToken", (req, res) => {
-  let tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
-  let jwtSecretKey = process.env.JWT_SECRET_KEY;
-
-  try {
-      const token = req.header(tokenHeaderKey);
-
-      const verified = jwt.verify(token, jwtSecretKey);
-      if(verified){
-          return res.send("Successfully Verified");
-      }else{
-          // Access Denied
-          return res.status(401).send(error);
-      }
-  } catch (error) {
-      // Access Denied
-      return res.status(401).send(error);
-  }
-});
-
 app.get("/logout", (req, res) => {
   req.logOut();
   // req.flash('succes_msg', 'You are logged out');
-  res.redirect("login");
 });
 
 // Users
@@ -134,7 +109,7 @@ const userPayload = {
   },
 };
 
-app.get("/users", (_, res) => {
+app.get("/users", jwtAuth, (_, res) => {
   axios
     .post(API_URL + "/action/find", userPayload, config)
     .then((response) => res.send(response.data))
