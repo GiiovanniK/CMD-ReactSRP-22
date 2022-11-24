@@ -1,3 +1,4 @@
+import { useIonRouter } from "@ionic/react";
 import axios from "axios";
 import { UserLogin, UsersRequest } from "../pages/user/Types";
 
@@ -24,11 +25,8 @@ const login = (payload: UserLogin) => {
     });
 };
 
-const logout = () => {
-  localStorage.removeItem("user");
-  return axios.post("/logout").then((response) => {
-    return response.data;
-  });
+const logout = async() => {
+  await localStorage.removeItem("user");
 };
 
 const AuthService = {

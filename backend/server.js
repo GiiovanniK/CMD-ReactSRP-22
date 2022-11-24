@@ -91,11 +91,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/logout", (req, res) => {
-  req.logOut();
-  // req.flash('succes_msg', 'You are logged out');
-});
-
 // Users
 const userPayload = {
   collection: "users",

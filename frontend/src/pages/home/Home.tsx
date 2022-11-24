@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { IonContent, IonHeader, IonPage, IonIcon, IonButton, IonToolbar, IonButtons } from "@ionic/react";
+import { IonContent, IonHeader, IonPage, IonIcon, IonButton, IonToolbar, IonButtons, useIonRouter } from "@ionic/react";
 import { personCircleOutline } from "ionicons/icons";
 import "./Home.css";
 import MainTabs from "../../components/MainTabs";
@@ -7,6 +7,7 @@ import Greeting from "../../components/Greeting";
 
 import UserService from "../../services/UserService";
 import { UsersResponse } from "../user/Types";
+import AuthService from "../../services/AuthService";
 
 const Home: React.FC = () => {
   const [content, setContent] = useState([]);
@@ -14,12 +15,24 @@ const Home: React.FC = () => {
   useEffect(() => {
     UserService.getUser()
       .then((response) => {
-        setContent(response.data.documents)
+        setContent(response.data.documents);
       })
       .catch((error) => {
         console.log(error.toJSON());
       });
   }, []);
+
+  const router = useIonRouter();
+  const handleLogout = (e: any) => {
+    AuthService.logout()
+      .then((res) => {
+        console.log(res);
+        router.push("/login");
+      })
+      .catch((error) => {
+        console.log(error.toJSON());
+      });
+  };
 
   return (
     <IonPage>
@@ -30,7 +43,7 @@ const Home: React.FC = () => {
           </div>
           <IonButtons slot="start">
             <IonButton>
-              <IonIcon/>
+              <IonIcon />
             </IonButton>
           </IonButtons>
           <IonButtons slot="end">
@@ -46,6 +59,11 @@ const Home: React.FC = () => {
           {content.map((entry: UsersResponse) => (
             <p key={entry._id}>{entry.firstName}</p>
           ))}
+        </div>
+        <div className="center">
+          <IonButton onClick={handleLogout} className="ion-margin-top buttonText" color="degasjes-main">
+            Log uit
+          </IonButton>
         </div>
       </IonContent>
       <MainTabs />
