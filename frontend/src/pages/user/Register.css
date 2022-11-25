@@ -88,3 +88,8 @@ input::placeholder {
 ::-webkit-calendar-picker-indicator {
   padding-right: 1em;
 }
+
+.passMissmatchErr {
+  margin-top: 0;
+  color: red;
+}

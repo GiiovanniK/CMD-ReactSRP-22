@@ -78,7 +78,7 @@ const Register: React.FC = () => {
               onIonChange={(e: any) => handleConfirmPassword(e)}
               required></IonInput>
           </div>
-          {error ? <p>{error}</p> : <></>}
+          {error ? <p className="passMissmatchErr">{error}</p> : <></>}
           <div className="firstNameLast">
             <div className="register-form">
               <IonInput
