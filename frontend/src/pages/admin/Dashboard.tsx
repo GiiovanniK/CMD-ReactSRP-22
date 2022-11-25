@@ -30,15 +30,23 @@ const Dashboard: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding" color="degasjes-white">
         <div>
-          <Greeting />
+          <h1 className="ion-margin-bottom">Gebruikerslijst</h1>
           {content.map((entry: UsersResponse) => (
-            <p key={entry._id}>
-              First name: {entry.firstName} Last name: {entry.lastName} Role: {entry.role}
-            </p>
+            <section className="userData" key={entry._id}>
+              <div>
+                <span>First name:</span> {entry.firstName}
+              </div> 
+              <div>
+                <span>Last name:</span> {entry.lastName}
+              </div> 
+              <div>
+                <span>Role:</span> {entry.role}
+              </div>
+            </section>
           ))}
         </div>
         <div className="center">
-          <IonButton href="/" className="ion-margin-top buttonText" color="degasjes-main">
+          <IonButton href="/home" className="ion-margin-top buttonText" color="degasjes-main">
             Terug naar home
           </IonButton>
         </div>

@@ -26,7 +26,6 @@ import './theme/variables.css';
 import Home from './pages/home/Home';
 import Register from './pages/user/Register';
 import Login from './pages/user/Login';
-import Profile from './pages/profile/Profile';
 import Dashboard from './pages/admin/Dashboard';
 import ProtectedRoute from './services/ProtectService';
 
@@ -36,11 +35,10 @@ const App: React.FC = () => (
     <IonApp>
       <IonReactRouter>
         <ProtectedRoute>
-          <Route path="/" component={Home} exact={true} />
-        </ProtectedRoute>
+          <Route path="/home" component={Home} exact={true} />
+        </ProtectedRoute>        
         <Route path="/register" component={Register} exact={true} />
         <Route path="/login" component={Login} exact={true} />
-        <Route path="/profile" component={Profile} exact={true} />
         <Route path="/dashboard" component={Dashboard} exact={true} />
       </IonReactRouter>
     </IonApp>

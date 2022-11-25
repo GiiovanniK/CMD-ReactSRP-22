@@ -24,7 +24,7 @@ const Login: React.FC = () => {
     AuthService.login({ email, password })
       .then((res) => {
         console.log(res);
-        router.push('/');
+        router.push('/home');
       })
       .catch((err) => {
         console.log(err.toJSON());

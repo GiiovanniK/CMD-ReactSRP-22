@@ -3,3 +3,11 @@
     text-transform: uppercase;
     font-size: 14px;
 }
+
+.userData span {
+    font-weight: bold;
+}
+
+section {
+    margin-bottom: 1em;
+}

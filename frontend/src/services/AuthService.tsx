@@ -16,7 +16,7 @@ const login = (payload: UserLogin) => {
     })
     .then((response) => {
       if (response.data.accessToken) {
-        // set 
+        // set jwt in local storage
         localStorage.setItem("user", response.data.accessToken);
       } else {
         console.log("no response");

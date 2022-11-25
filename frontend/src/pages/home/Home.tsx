@@ -49,7 +49,7 @@ const Home: React.FC = () => {
             </IonButton>
           </IonButtons>
           <IonButtons slot="end">
-            <IonButton href="/profile">
+            <IonButton>
               <IonIcon icon={personCircleOutline} />
             </IonButton>
           </IonButtons>
