@@ -20,6 +20,23 @@ const Home: React.FC = () => {
       });
   };
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/is-admin`, {
+      headers: {
+        "x-auth-token": localStorage.getItem("user") || "",
+      },
+    })
+      .then((response) => {
+        console.log(response)
+        if ((response.status === 200)) {
+          setIsAuthenticated(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <IonPage>
       <IonHeader>
@@ -44,6 +61,7 @@ const Home: React.FC = () => {
           <Greeting />
         </div>
         <div className="center">
+          <>{isAuthenticated && <IonButton href="/dashboard" color="degasjes-main" className="buttonText">Dashboard</IonButton>}</>
           <IonButton onClick={handleLogout} className="ion-margin-top buttonText" color="degasjes-main">
             Log uit
           </IonButton>

@@ -10,6 +10,7 @@ const roleAuth = async (req, res, next) => {
     return;
   }
   try {
+    // role is being sent with the jwt and then decoded to check if role is not admin
     const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
     if (user.role !== "admin") {
       res.status(401).json("unauthorized!");

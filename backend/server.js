@@ -30,7 +30,7 @@ app.get("/", (_, res) => {
   res.send("Server is running!");
 });
 
-// users post
+// users register
 const registerPayload = {
   collection: "users",
   database: DATABASE,
@@ -59,7 +59,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// Login
+// users login
 let loginPayload = {
   collection: "users",
   database: DATABASE,
@@ -79,7 +79,9 @@ app.post("/login", async (req, res) => {
     const emailMatch = User.email === response.data.document.email;
     const passwordMatch = await bcrypt.compare(User.password, response.data.document.password);
     if (emailMatch && passwordMatch) {
-      const accessToken = jwt.sign({ email: response.data.document.email, role: response.data.document.role }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
+      const accessToken = jwt.sign({ email: response.data.document.email, role: response.data.document.role }, process.env.JWT_SECRET_KEY, {
+        expiresIn: "1h",
+      });
       res.json({ accessToken });
     } else {
       console.log("Email of wachtwoord is onjuist");
@@ -91,7 +93,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// Users
+// users get
 const userPayload = {
   collection: "users",
   database: DATABASE,
@@ -111,6 +113,19 @@ app.get("/users", roleAuth, (_, res) => {
     .catch((error) => {
       console.log(error);
     });
+});
+
+const rolePayload = {
+  collection: "users",
+  database: DATABASE,
+  dataSource: DATASOURCE,
+  projection: {
+    role: 1,
+  },
+};
+
+app.get("/is-admin", roleAuth, (_, res) => {
+  res.send();
 });
 
 // console log when app is running

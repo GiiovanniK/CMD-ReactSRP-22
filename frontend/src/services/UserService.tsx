@@ -6,6 +6,7 @@ const getUser = () => {
   const config = {
     headers: {
       "content-type": "application/json",
+      // set token in header
       "x-auth-token": localStorage.getItem("user"),
     },
   }

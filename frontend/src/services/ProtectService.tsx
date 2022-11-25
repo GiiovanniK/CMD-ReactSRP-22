@@ -8,6 +8,7 @@ const ProtectedRoute = (props: { children: ReactNode }) => {
     checkUserToken();
   }, [isLoggedIn]);
   const checkUserToken = () => {
+    // get token from localstore and check if it's present
     const userToken = localStorage.getItem("user");
     if (!userToken || userToken === "undefined") {
       setIsLoggedIn(false);

@@ -16,14 +16,15 @@ const login = (payload: UserLogin) => {
     })
     .then((response) => {
       if (response.data.accessToken) {
+        // set 
         localStorage.setItem("user", response.data.accessToken);
-        console.log(localStorage)
       } else {
         console.log("no response");
       }
     });
 };
 
+// remove jwt from localstorage
 const logout = async() => {
   await localStorage.removeItem("user");
 };
